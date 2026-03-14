@@ -1,0 +1,12 @@
+1. Player movement
+	-movement script
+	-animations script
+2. Sound manager
+3. Game manager
+	-UI
+	-Camera sequence
+		-Cinemachine camera
+4. Level
+	-Environment
+	-Enemies
+5. Collectible system

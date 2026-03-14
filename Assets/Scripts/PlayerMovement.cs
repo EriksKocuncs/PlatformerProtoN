@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
 
         [Tooltip("When the player is allowed to jump or not.")]
         public bool canJump;
+        
+        [Tooltip("Amount of health Player has")]
+        public int health;
+
+        [Tooltip("How much damage player takes in one hit")]
+        public int damage;
     }
     
     public Stats playerStats;
@@ -47,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Debug.Log("Player health: " + playerStats.health);
     }
 
     private void Update()
@@ -90,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             
             // directional movement is wrapped around which way the camera is facing
             Vector3 movement = ((mainCamera.right * moveX) * playerStats.speed) + ((mainCamera.forward * moveY) * playerStats.speed);
-            rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+            rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
 
             // player faces the direction they are moving towards
             if (movement.x != 0 && movement.z != 0)

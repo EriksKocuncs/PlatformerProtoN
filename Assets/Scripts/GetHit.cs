@@ -16,6 +16,8 @@ public class GetHit : MonoBehaviour
     {
         playerMovementScript = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody>();
+        playerMovementScript.playerStats.health = 100;
+        playerMovementScript.playerStats.damage = 25;
     }
     private void FixedUpdate()
     {
@@ -60,6 +62,9 @@ public class GetHit : MonoBehaviour
     private void TakeDamage()
     {
         hurt = true;
+        Debug.Log("Player took " + playerMovementScript.playerStats.damage + " damage");
+        playerMovementScript.playerStats.health -= playerMovementScript.playerStats.damage;
+        Debug.Log("Current Player health: " + playerMovementScript.playerStats.health);
         playerMovementScript.playerStats.canMove = false;
         playerMovementScript.soundManager.PlayHitSound();
         StartCoroutine("Recover");
